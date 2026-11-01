@@ -1618,8 +1618,8 @@ function auftragLoeschen(id) {
 // ═══════════════════════════════════════════════
 // SUPABASE INTEGRATION
 // ═══════════════════════════════════════════════
-let SUPABASE_URL = "";
-let SUPABASE_KEY = "";
+let SUPABASE_URL = "https://rjjatbnrzjvpnjcndnhb.supabase.co";
+let SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJqamF0Ym5yemp2cG5qY25kbmhiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTI5NDE4NDEsImV4cCI6MjEwODUxNzg0MX0.5gxnzq71O5Y0SMhwYvNijbLkGBL3uAPp33Ky056xfWs";
 let supabaseVerbunden = false;
 const settingsModal = document.getElementById("settings-modal");
 
@@ -1668,18 +1668,11 @@ function sbCfgLoeschen() {
   cookieLoeschen("ps360_sb");
 }
 
-// Beim Start laden
+// Beim Start laden — URL und Key sind fest eingebaut, sofort verbinden
 try {
-  const cfg = sbCfgLaden();
-  if (cfg) {
-    SUPABASE_URL = cfg.url || "";
-    SUPABASE_KEY = cfg.key || "";
-    if (SUPABASE_URL && SUPABASE_KEY) {
-      document.getElementById("sb-url-input").value = SUPABASE_URL;
-      document.getElementById("sb-key-input").value = SUPABASE_KEY;
-      setTimeout(supabaseAuftraegeHolen, 500);
-    }
-  }
+  document.getElementById("sb-url-input").value = SUPABASE_URL;
+  document.getElementById("sb-key-input").value = SUPABASE_KEY;
+  setTimeout(supabaseAuftraegeHolen, 500);
 } catch(e) {}
 
 function supabaseStatusAnzeigen(verbunden, text) {
